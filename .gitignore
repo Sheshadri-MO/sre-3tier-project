@@ -1,0 +1,7 @@
+.vagrant/
+*.tfstate
+*.tfstate.backup
+terraform/.vagrant/
+*.log
+.DS_Store 
+
