@@ -20,54 +20,82 @@ Infrastructure is provisioned using Terraform, virtual machines are managed usin
 **Monitoring Layer**
 
 Node Exporter → Prometheus → Grafana
+
+
 **Tools & Technologies**
+
 **Tool	Purpose**
-Terraform=Infrastructure provisioning
-Vagrant=Virtual machine lifecycle
-VirtualBox=VM provider
-Ansible=Configuration management
-Nginx=Web server & load balancer
-Prometheus=Metrics collection
-Grafana=Monitoring dashboards
+
+Terraform - Infrastructure provisioning
+
+Vagrant - Virtual machine lifecycle
+
+VirtualBox - VM provider
+
+Ansible - Configuration management
+
+Nginx - Web server & load balancer
+
+Prometheus - Metrics collection
+
+Grafana - Monitoring dashboards
 
 **Infrastructure Deployment**
 
 Terraform provisions the infrastructure and triggers Vagrant to create the virtual machines.
 
-Initialize Terraform
+**Initialize Terraform**
+
 terraform init
-Create Infrastructure
+
+**Plan Infrastructure**
+
+terraform plan 
+
+**Create Infrastructure**
+
 terraform apply
 
-This creates three virtual machines:
+**This creates three virtual machines:**
 
 web1
+
 web2
+
 loadbalancer
 
 **Server Configuration with Ansible**
 
 Ansible playbooks automate installation and configuration.
 
-Playbooks used:
+**Playbooks used:**
 
 webserver.yml
+
 loadbalancer.yml
+
 monitoring.yml
 
-Run the playbooks:
+**Run the playbooks:**
 
-ansible-playbook webserver.yml
-ansible-playbook loadbalancer.yml
-ansible-playbook monitoring.yml
-Web Server Deployment
+ansible all -i inventory.ini -m ping 
+
+ansible-playbook -i inventory.ini webserver.yml
+
+ansible-playbook -i inventory.ini loadbalancer.yml
+
+ansible-playbook -i inventory.ini monitoring.yml
+
+**Web Server Deployment**
 
 Both web1 and web2 run Nginx and serve static webpages.
 
 **Example output**:
 
 Hello from web1
+
 Hello from web2
+
 Load Balancer
 
 The load balancer uses Nginx as a reverse proxy.
@@ -85,7 +113,9 @@ Monitoring tools are deployed using Ansible.
 **Components:**
 
 • Node Exporter
+
 • Prometheus
+
 • Grafana
 
 Node Exporter collects system metrics from each server.
@@ -97,26 +127,33 @@ Grafana visualizes the metrics through dashboards.
 **Service Ports**
 
 Service	Port
+
 SSH-22
+
 Web Serve-80
+
 Node Exporter-9100
+
 Prometheus-9090
+
 Grafana-3000
 
 **Access URLs**
 
-Prometheus
+**Prometheus**
 
 http://192.168.56.103:9090
 
-Grafana
+**Grafana**
 
 http://192.168.56.103:3000
 
-Default login
+**Default login**
 
-username: admin
-password: admin
+**username:** admin
+
+**password:** admin
+
 Grafana Dashboard
 
 Import dashboard ID:
@@ -128,40 +165,57 @@ This dashboard visualizes CPU, memory, disk, and network metrics.
 **Project Workflow**
 
 Terraform → Infrastructure provisioning
-       ↓
-Vagrant → VM management
-       ↓
+
+Vagrant→ VM management
+          
 Ansible → Server configuration
-       ↓
-Nginx → Load balancing
-       ↓
+       
+Nginx → Load balancing       
+         
 Prometheus → Metrics collection
-       ↓
+                
 Grafana → Monitoring dashboards
 
 **Project Structure**
 
-sre-3tier-project
+**sre-3tier-project**
+
 │
-├── terraform
+
+├── **terraform**
+
 │   ├── main.tf
+
 │   ├── variables.tf
+
 │   └── Vagrantfile
+
 │
-├── ansible
+
+├── **ansible**
+
 │   ├── inventory.ini
+
 │   ├── webserver.yml
+
 │   ├── loadbalancer.yml
+
 │   └── monitoring.yml
+
 │
-└── README.md
+
+└── **README.md**
 
 **Learning Outcomes**
 
-This project demonstrates:
+**This project demonstrates:**
 
 • Infrastructure as Code
+
 • Configuration management automation
+
 • Load balancing architecture
+
 • Monitoring implementation
+
 • DevOps workflow integration
