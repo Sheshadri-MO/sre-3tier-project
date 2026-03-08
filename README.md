@@ -5,6 +5,7 @@ This project demonstrates the deployment of a 3-tier architecture using Infrastr
 Infrastructure is provisioned using Terraform, virtual machines are managed using Vagrant, configuration is automated using Ansible, and monitoring is implemented using Prometheus and Grafana.
 
 **Architecture Diagram**
+
                Client
                  |
                  |
@@ -13,6 +14,7 @@ Infrastructure is provisioned using Terraform, virtual machines are managed usin
              /         \
             /           \
       web1 (Nginx)    web2 (Nginx)
+      
      192.168.56.101  192.168.56.102
 
 **Monitoring Layer**
@@ -27,6 +29,7 @@ Ansible=Configuration management
 Nginx=Web server & load balancer
 Prometheus=Metrics collection
 Grafana=Monitoring dashboards
+
 **Infrastructure Deployment**
 
 Terraform provisions the infrastructure and triggers Vagrant to create the virtual machines.
@@ -41,6 +44,7 @@ This creates three virtual machines:
 web1
 web2
 loadbalancer
+
 **Server Configuration with Ansible**
 
 Ansible playbooks automate installation and configuration.
@@ -91,12 +95,14 @@ Prometheus scrapes the metrics and stores them.
 Grafana visualizes the metrics through dashboards.
 
 **Service Ports**
+
 Service	Port
 SSH-22
 Web Serve-80
 Node Exporter-9100
 Prometheus-9090
 Grafana-3000
+
 **Access URLs**
 
 Prometheus
@@ -120,6 +126,7 @@ Import dashboard ID:
 This dashboard visualizes CPU, memory, disk, and network metrics.
 
 **Project Workflow**
+
 Terraform → Infrastructure provisioning
        ↓
 Vagrant → VM management
@@ -131,7 +138,9 @@ Nginx → Load balancing
 Prometheus → Metrics collection
        ↓
 Grafana → Monitoring dashboards
+
 **Project Structure**
+
 sre-3tier-project
 │
 ├── terraform
@@ -146,6 +155,7 @@ sre-3tier-project
 │   └── monitoring.yml
 │
 └── README.md
+
 **Learning Outcomes**
 
 This project demonstrates:
